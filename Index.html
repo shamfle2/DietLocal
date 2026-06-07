@@ -1,26 +1,1157 @@
-Perfecto. Mi recomendación como nutriólogo:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dieta Fusionada | Gilberto — 95 kg</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #1c2330;
+    --border: #30363d;
+    --green: #3fb950;
+    --green-dim: #238636;
+    --green-glow: rgba(63,185,80,0.15);
+    --red: #f85149;
+    --yellow: #d29922;
+    --blue: #58a6ff;
+    --orange: #f0883e;
+    --purple: #bc8cff;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --text-subtle: #6e7681;
+    --accent: #3fb950;
+    --radius: 10px;
+  }
 
-**Reemplaza las nueces por MCT + café negro** — es lo más limpio para mantener el ayuno con energía real para entrenar:
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-> ☕ **12:15pm:** Café negro + 1 cdita de aceite de coco (o MCT oil si consigues) + pizca de canela
-> - Calorías: ~40 kcal, casi cero insulina
-> - Efecto: cetosis leve inmediata → energía directa para músculo
-> - El ayuno metabólico se mantiene prácticamente intacto
+  html { scroll-behavior: smooth; }
 
-Si no tienes aceite de coco/MCT, las **8–10 nueces están bien** — grasa pura, insulina casi nula. Lo importante es que NO agregues fruta, proteína ni carb antes del entreno.
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
 
----
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0d1117 0%, #0d2818 50%, #0d1117 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(63,185,80,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(63,185,80,0.4);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+  .stat-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .stat-pill .val { font-weight: 700; color: var(--green); font-family: 'Syne', sans-serif; }
+  .progress-wrap {
+    max-width: 380px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: left;
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .progress-label strong { color: var(--green); }
+  .progress-bar-bg {
+    background: var(--border);
+    border-radius: 4px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    background: linear-gradient(90deg, #238636, #3fb950);
+    height: 100%;
+    border-radius: 4px;
+    width: 34.4%; /* 5.5 of ~16kg total goal */
+    transition: width 1s ease;
+  }
+  .progress-note {
+    font-size: 12px;
+    color: var(--text-subtle);
+    margin-top: 8px;
+    text-align: center;
+  }
 
-Ahora sí tengo todo para reconstruir la dieta completa. Genero la página actualizada:Aquí está tu dieta v2 completamente actualizada. Resumen de todo lo que cambió:
+  /* NAV */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    display: inline-block;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 12px 14px;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+  }
+  nav a:hover { color: var(--text); border-bottom-color: var(--green); }
 
-**Protocolo de ayuno** — Ahora refleja tu rutina real: ayuno 9pm → 12:30pm (18h), pre-entreno a las 12:15pm, ejercicio 12:30–2:30pm, y ventana de comida 3pm–9pm.
+  /* MAIN */
+  main { max-width: 860px; margin: 0 auto; padding: 32px 16px 64px; }
 
-**Pre-entreno** — Dos opciones documentadas: café + aceite de coco (~40 kcal, recomendado) ó 8–10 nueces (~100 kcal). Ambas conservan el ayuno metabólico, ninguna con carbohidrato.
+  /* SECTION TITLES */
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
 
-**Calorías** — Bajaron de 2,000 → 1,800 kcal ajustadas a tu nuevo peso de 95 kg, con distribución: 800 + 250 + 650 + ~100 pre-entreno.
+  section { margin-bottom: 48px; }
 
-**Proteína** — Subió a 160g/día. Todas las porciones de proteína aumentaron 25–30g (pescado 150→175g, pollo 150→175g, atún 150→180g, panela en colaciones).
+  /* CARDS GRID */
+  .cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .cards-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
-**Colaciones** — Ahora incluyen proteína real: huevo cocido o queso panela en cubos, en lugar de solo fruta + nueces.
+  @media (max-width: 600px) {
+    .cards-2, .cards-3, .cards-4 { grid-template-columns: 1fr; }
+  }
 
-**Zona 2** — Recalibrada a 126–140 lpm para 95 kg. Cardio extendido a 45–50 min.
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+  }
+  .card h4 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: 12px;
+    color: var(--text-muted);
+  }
+  .card.green-accent { border-top: 2px solid var(--green); }
+  .card.red-accent   { border-top: 2px solid var(--red); }
+  .card.yellow-accent { border-top: 2px solid var(--yellow); }
+  .card.blue-accent  { border-top: 2px solid var(--blue); }
+  .card.orange-accent { border-top: 2px solid var(--orange); }
+
+  /* TAG LIST */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+  .tag.green { background: rgba(63,185,80,.1); border-color: rgba(63,185,80,.3); color: var(--green); }
+  .tag.red   { background: rgba(248,81,73,.1); border-color: rgba(248,81,73,.3); color: var(--red); }
+  .tag.yellow { background: rgba(210,153,34,.1); border-color: rgba(210,153,34,.3); color: var(--yellow); }
+  .tag.blue  { background: rgba(88,166,255,.1); border-color: rgba(88,166,255,.3); color: var(--blue); }
+
+  /* MACRO BARS */
+  .macro-item { margin-bottom: 14px; }
+  .macro-item:last-child { margin-bottom: 0; }
+  .macro-head { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; }
+  .macro-head .name { color: var(--text-muted); }
+  .macro-head .nums { font-weight: 600; color: var(--text); font-family: 'Syne', sans-serif; }
+  .mbar-bg { background: var(--border); border-radius: 3px; height: 6px; overflow: hidden; }
+  .mbar-fill { height: 100%; border-radius: 3px; }
+
+  /* TIMELINE / AYUNO */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--border) 0%, var(--green-dim) 40%, var(--border) 100%);
+  }
+  .tl-item { position: relative; margin-bottom: 18px; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--border);
+    border: 2px solid var(--surface);
+  }
+  .tl-dot.active { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .tl-dot.pre    { background: var(--yellow); }
+  .tl-dot.break  { background: var(--orange); }
+  .tl-time { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--text); }
+  .tl-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .tl-note {
+    margin-top: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .tl-note strong { color: var(--text); }
+
+  /* FASTING WINDOW VIS */
+  .fast-vis {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .fast-bar-wrap { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin: 12px 0 8px; }
+  .fast-segment { display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; letter-spacing: .03em; }
+  .seg-fast { flex: 18; background: linear-gradient(90deg, #1c2330, #0d2010); color: var(--text-subtle); border: 1px solid var(--border); }
+  .seg-pre  { flex: 0.5; background: rgba(210,153,34,.25); color: var(--yellow); }
+  .seg-eat  { flex: 6; background: linear-gradient(90deg, rgba(63,185,80,.3), rgba(63,185,80,.15)); color: var(--green); }
+  .fast-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-muted); }
+  .fast-legend span { display: flex; align-items: center; gap: 5px; }
+  .fast-legend .dot { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* WEEK PLAN */
+  .day-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .day-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all .2s;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .day-btn:hover, .day-btn.active {
+    background: var(--green-dim);
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .day-content { display: none; }
+  .day-content.active { display: block; }
+
+  .meal-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .meal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .meal-title { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700; }
+  .meal-kcal {
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Syne', sans-serif;
+    background: var(--green-dim);
+    color: var(--green);
+    border: 1px solid rgba(63,185,80,.3);
+    border-radius: 5px;
+    padding: 2px 8px;
+  }
+  .meal-body { padding: 14px 16px; font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  .meal-body strong { color: var(--text); }
+  .meal-tip {
+    margin-top: 10px;
+    background: rgba(63,185,80,.06);
+    border-left: 3px solid var(--green);
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--green);
+    border-radius: 0 6px 6px 0;
+  }
+  .pre-meal {
+    background: rgba(210,153,34,.07);
+    border: 1px solid rgba(210,153,34,.2);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--yellow);
+  }
+  .pre-meal strong { color: #f0c060; }
+
+  /* RULES */
+  .rules-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .rules-list li {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .rules-list li .num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--green);
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .rules-list li.critical { border-left: 3px solid var(--red); }
+  .rules-list li.critical .num { color: var(--red); }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--surface2);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+  td strong { color: var(--text); }
+  .td-green { color: var(--green); font-weight: 600; font-family: 'Syne', sans-serif; }
+  .td-red   { color: var(--red); }
+
+  /* EXERCISE */
+  .week-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
+  @media (max-width: 600px) { .week-grid { grid-template-columns: repeat(4, 1fr); } }
+  .day-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+  }
+  .day-pill .d { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted); margin-bottom: 6px; }
+  .day-pill .icon { font-size: 20px; margin-bottom: 4px; }
+  .day-pill .type { font-size: 10px; color: var(--text-subtle); line-height: 1.3; }
+  .day-pill.z2 { border-top: 2px solid var(--blue); }
+  .day-pill.force { border-top: 2px solid var(--orange); }
+  .day-pill.mob { border-top: 2px solid var(--purple); }
+  .day-pill.rest { border-top: 2px solid var(--border); opacity: .6; }
+
+  .zona2-badge {
+    background: rgba(88,166,255,.1);
+    border: 1px solid rgba(88,166,255,.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .zona2-badge .lpm { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--blue); }
+
+  /* TIMELINE UPDATE */
+  .highlight-box {
+    background: rgba(63,185,80,.07);
+    border: 1px solid rgba(63,185,80,.25);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+  }
+  .highlight-box .hb-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--green);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  .highlight-box p { font-size: 13px; color: var(--text-muted); }
+
+  /* PROGNOSIS */
+  .prognosis-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .prog-card {
+    flex: 1;
+    min-width: 120px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+  .prog-card .pw { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: var(--green); }
+  .prog-card .pl { font-size: 11px; color: var(--text-subtle); margin-top: 2px; text-transform: uppercase; letter-spacing: .04em; }
+
+  /* STARS / ALIMENTOS */
+  .foods-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+  .food-chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    transition: border-color .2s;
+  }
+  .food-chip:hover { border-color: var(--green); color: var(--text); }
+  .food-chip .fi { font-size: 24px; margin-bottom: 5px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 12px;
+    color: var(--text-subtle);
+  }
+
+  /* BACK TO TOP */
+  .back-top {
+    display: block;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 13px;
+    text-decoration: none;
+    margin-top: 24px;
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    transition: all .2s;
+  }
+  .back-top:hover { color: var(--green); border-color: var(--green); }
+
+  /* UTIL */
+  .mt-12 { margin-top: 12px; }
+  .badge-new {
+    display: inline-block;
+    background: rgba(63,185,80,.15);
+    color: var(--green);
+    border: 1px solid rgba(63,185,80,.3);
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    vertical-align: middle;
+  }
+  .badge-upd {
+    display: inline-block;
+    background: rgba(210,153,34,.15);
+    color: var(--yellow);
+    border: 1px solid rgba(210,153,34,.3);
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 6px;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-badge">⚡ Protocolo Actualizado v2</div>
+  <h1>Revertir Resistencia a la Insulina<br><span>+ Hígado Graso</span></h1>
+  <p class="hero-sub">1,800 kcal · Ayuno 18:6 · Ventana 3pm – 9pm · Protocolo terapéutico real</p>
+  <div class="hero-stats">
+    <div class="stat-pill">👤 <span>Gilberto</span></div>
+    <div class="stat-pill">⚖️ Actual: <span class="val">95 kg</span></div>
+    <div class="stat-pill">📏 <span class="val">170 cm</span></div>
+    <div class="stat-pill">🎂 <span class="val">38 años</span></div>
+    <div class="stat-pill">🔥 <span class="val">1,800 kcal/día</span></div>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Inicio: 100.5 kg</span>
+      <strong>−5.5 kg ✓</strong>
+      <span>Meta: 84 kg</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <p class="progress-note">5.5 kg perdidos de ~16.5 kg totales · 33% completado 🎯</p>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <a href="#ayuno">Ayuno</a>
+  <a href="#calorias">Calorías</a>
+  <a href="#alimentos">Alimentos</a>
+  <a href="#plan">Plan Semanal</a>
+  <a href="#reglas">Reglas</a>
+  <a href="#ejercicio">Ejercicio</a>
+  <a href="#progresion">Progresión</a>
+</nav>
+
+<main>
+
+  <!-- AJUSTES V2 -->
+  <section>
+    <div class="section-title">🔄 Cambios v2 — Ajuste a 95 kg</div>
+    <div class="cards-2">
+      <div class="card green-accent">
+        <h4>✅ Qué se mantuvo</h4>
+        <div class="tag-list">
+          <span class="tag green">Ayuno IF</span>
+          <span class="tag green">Vinagre manzana</span>
+          <span class="tag green">Nopal diario</span>
+          <span class="tag green">Caminata post-comida</span>
+          <span class="tag green">Cero azúcar</span>
+          <span class="tag green">3 tomas/día</span>
+          <span class="tag green">Tortilla de maíz</span>
+          <span class="tag green">Aguacate</span>
+        </div>
+      </div>
+      <div class="card yellow-accent">
+        <h4>⚡ Qué cambió</h4>
+        <div class="tag-list">
+          <span class="tag yellow">2,000 → 1,800 kcal</span>
+          <span class="tag yellow">16:8 → 18:6</span>
+          <span class="tag yellow">1pm → 3pm ventana</span>
+          <span class="tag yellow">Proteína +15g/día</span>
+          <span class="tag yellow">Carbs −15g/día</span>
+          <span class="tag yellow">Agua +300ml/día</span>
+          <span class="tag yellow">Cardio Z2 +10min</span>
+          <span class="tag yellow">Pre-entreno ajustado</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AYUNO -->
+  <section id="ayuno">
+    <div class="section-title">⏰ Ayuno 18:6 — Tu protocolo real</div>
+
+    <div class="fast-vis">
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">Ciclo de 24 horas</div>
+      <div class="fast-bar-wrap">
+        <div class="fast-segment seg-fast">⏸ 18h AYUNO</div>
+        <div class="fast-segment seg-pre">🥜</div>
+        <div class="fast-segment seg-eat">✅ 6h COMIDA</div>
+      </div>
+      <div class="fast-legend">
+        <span><span class="dot" style="background:#1c2330;border:1px solid #30363d"></span>Ayuno 9pm → 12:30pm</span>
+        <span><span class="dot" style="background:rgba(210,153,34,.4)"></span>Pre-entreno 12:30pm</span>
+        <span><span class="dot" style="background:rgba(63,185,80,.4)"></span>Ventana 3pm → 9pm</span>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-time">9:00 pm — Cierre de ventana</div>
+        <div class="tl-label">Inicia el ayuno. Solo agua, sin excepciones.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">6:00 am – 12:15 pm — Ayuno activo</div>
+        <div class="tl-label">Café negro sin azúcar ✅ · Agua con limón ✅ · Té sin azúcar ✅</div>
+        <div class="tl-note">Máx 3 cafés antes de las 2pm. Todo lo demás ❌</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot pre"></div>
+        <div class="tl-time">12:15 pm — Pre-entreno <span class="badge-upd">ajustado</span></div>
+        <div class="tl-label">Opción A (recomendada): café negro + 1 cdita aceite de coco + canela (~40 kcal)</div>
+        <div class="tl-note">
+          <strong>Opción B:</strong> 8–10 nueces de castilla (~100 kcal) — grasa pura, insulina mínima.<br>
+          Ambas opciones conservan el estado metabólico del ayuno. <strong>Nunca carbohidrato antes del entreno.</strong>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot pre"></div>
+        <div class="tl-time">12:30 – 2:30 pm — Ejercicio en ayuno</div>
+        <div class="tl-label">Cardio Z2 o fuerza. Máxima quema de grasa hepática.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot pre"></div>
+        <div class="tl-time">2:45 pm — Vinagre de manzana</div>
+        <div class="tl-label">1 cdita VDM + agua + limón, 15 min antes de romper ayuno.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot break"></div>
+        <div class="tl-time">3:00 pm — 🍽️ Primera comida (rompe ayuno)</div>
+        <div class="tl-label">~800 kcal. La más grande del día. Proteína + verdura + carbohidrato complejo.</div>
+        <div class="tl-note">🚶 Caminata 10–15 min después — reduce pico de glucosa ~30%</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">6:30 pm — 🥜 Colación</div>
+        <div class="tl-label">~250 kcal. Proteína + grasa saludable + fruta pequeña.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">8:30 pm — 🌙 Cena</div>
+        <div class="tl-label">~650 kcal. Ligera, alta en proteína, baja en carbs.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-time">9:00 pm — Cierre de ventana</div>
+        <div class="tl-label">Después solo agua. Se reinicia el ciclo.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALORÍAS -->
+  <section id="calorias">
+    <div class="section-title">📊 Calorías y Macros — 1,800 kcal <span class="badge-upd">actualizado</span></div>
+
+    <div class="highlight-box">
+      <div class="hb-title">¿Por qué bajar a 1,800 kcal?</div>
+      <p>Con 95 kg tu metabolismo basal bajó ~120 kcal vs 101 kg. Si seguías en 2,000 kcal el déficit efectivo se reducía y la pérdida se estancaba. Con 1,800 kcal mantienes un déficit de ~400–500 kcal/día → ~0.8–1 kg/semana sin perder músculo.</p>
+    </div>
+
+    <div class="card mt-12">
+      <h4>Distribución diaria — 1,800 kcal</h4>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🍽️ Primera comida (3pm)</span><span class="nums">~800 kcal</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:44%;background:linear-gradient(90deg,#238636,#3fb950)"></div></div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🥜 Colación (6:30pm)</span><span class="nums">~250 kcal</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:14%;background:#d29922"></div></div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🌙 Cena (8:30pm)</span><span class="nums">~650 kcal</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:36%;background:#58a6ff"></div></div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">☕ Pre-entreno (12:15pm)</span><span class="nums">~100 kcal</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:6%;background:#f0883e"></div></div>
+      </div>
+    </div>
+
+    <div class="card mt-12">
+      <h4>Macros diarios</h4>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🥩 Proteína</span><span class="nums">160g · 640 kcal · 36%</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:36%;background:#f85149"></div></div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🥑 Grasa saludable</span><span class="nums">75g · 675 kcal · 38%</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:38%;background:#3fb950"></div></div>
+      </div>
+      <div class="macro-item">
+        <div class="macro-head"><span class="name">🌾 Carbohidratos</span><span class="nums">115g · 460 kcal · 26%</span></div>
+        <div class="mbar-bg"><div class="mbar-fill" style="width:26%;background:#d29922"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIMENTOS -->
+  <section id="alimentos">
+    <div class="section-title">🥑 Alimentos estrella</div>
+    <div class="foods-grid">
+      <div class="food-chip"><div class="fi">🌵</div>Nopal crudo</div>
+      <div class="food-chip"><div class="fi">🥚</div>Huevo entero</div>
+      <div class="food-chip"><div class="fi">🐟</div>Pescado/Sardina/Atún</div>
+      <div class="food-chip"><div class="fi">🥑</div>Aguacate</div>
+      <div class="food-chip"><div class="fi">🧂</div>Vinagre manzana</div>
+      <div class="food-chip"><div class="fi">🌱</div>Chía y linaza</div>
+      <div class="food-chip"><div class="fi">🥦</div>Brócoli/Coliflor</div>
+      <div class="food-chip"><div class="fi">🍎</div>Fruta entera (1/día)</div>
+      <div class="food-chip"><div class="fi">🌽</div>Tortilla de maíz</div>
+      <div class="food-chip"><div class="fi">🧀</div>Queso panela</div>
+      <div class="food-chip"><div class="fi">🥩</div>Carne magra</div>
+      <div class="food-chip"><div class="fi">🥜</div>Nueces (pre-entreno)</div>
+    </div>
+  </section>
+
+  <!-- PLAN SEMANAL -->
+  <section id="plan">
+    <div class="section-title">📅 Plan Semanal — 1,800 kcal</div>
+
+    <div class="highlight-box">
+      <div class="hb-title">🕐 Protocolo diario fijo</div>
+      <p><strong>12:15pm</strong> Pre-entreno: café + aceite de coco ó 8–10 nueces &nbsp;|&nbsp; <strong>12:30pm</strong> Ejercicio &nbsp;|&nbsp; <strong>2:45pm</strong> VDM + agua &nbsp;|&nbsp; <strong>3:00pm</strong> Primera comida &nbsp;|&nbsp; <strong>6:30pm</strong> Colación &nbsp;|&nbsp; <strong>8:30pm</strong> Cena &nbsp;|&nbsp; <strong>9:00pm</strong> Cierre ventana</p>
+    </div>
+
+    <div class="day-tabs">
+      <button class="day-btn active" onclick="showDay('lun')">Lun</button>
+      <button class="day-btn" onclick="showDay('mar')">Mar</button>
+      <button class="day-btn" onclick="showDay('mie')">Mié</button>
+      <button class="day-btn" onclick="showDay('jue')">Jue</button>
+      <button class="day-btn" onclick="showDay('vie')">Vie</button>
+      <button class="day-btn" onclick="showDay('sab')">Sáb</button>
+      <button class="day-btn" onclick="showDay('dom')">Dom</button>
+    </div>
+
+    <!-- LUNES -->
+    <div class="day-content active" id="day-lun">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Sopas de huevo:</strong> 3 huevos revueltos + 3 tortillas de maíz + 50g queso panela.<br>
+          Ensalada de nopal crudo (nopal + jitomate + cebolla + cilantro + limón).<br>
+          1 cdita aceite de oliva. Agua o jamaica sin azúcar.
+          <div class="meal-tip">🚶 Caminata 10–15 min después de comer</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 manzana o guayaba + <strong>1 huevo cocido</strong> + 8 nueces de castilla.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>175g filete de pescado</strong> a la plancha (sin empanizar).<br>
+          2 tazas ensalada (lechuga + pepino + cebolla + pimiento).<br>
+          <strong>½ taza arroz integral</strong> cocido. Aliño: limón + aceite oliva. Té verde o manzanilla.
+        </div>
+      </div>
+    </div>
+
+    <!-- MARTES -->
+    <div class="day-content" id="day-mar">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>3 huevos cocidos</strong> + 50g queso panela + 2 rebanadas pan integral tostado.<br>
+          Ensalada de nopal o col morada cruda con jitomate y cebolla.<br>
+          1 taza salsa bandera (jitomate + cebolla + cilantro + limón). Agua con limón y chía.
+          <div class="meal-tip">🚶 Caminata 10–15 min después de comer</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 fruta pequeña + <strong>80g queso panela en cubos</strong> + 2 cdas linaza molida.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Cazuela de res:</strong> 175g falda de res magra + calabaza + zanahoria + chayote.<br>
+          2 tortillas de maíz + ½ elote. Té de canela sin azúcar.
+        </div>
+      </div>
+    </div>
+
+    <!-- MIÉRCOLES -->
+    <div class="day-content" id="day-mie">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Omelette:</strong> 3 huevos + 50g queso panela + jitomate + cebolla + chile verde.<br>
+          Ensalada de nopal crudo con limón y vinagre. 2 tortillas de maíz.<br>
+          1 cdita aceite oliva. Agua de jamaica sin azúcar.
+          <div class="meal-tip">🚶 Caminata 10–15 min post-comida</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 guayaba o manzana + <strong>1 huevo cocido</strong> + 10 nueces.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Ensalada de atún:</strong> 180g atún en agua + lechuga + jitomate + cebolla + pepino.<br>
+          Aliño: aceite oliva + limón (sin mayonesa). 3 tostadas horneadas de maíz + ⅓ aguacate. Té verde.
+        </div>
+      </div>
+    </div>
+
+    <!-- JUEVES -->
+    <div class="day-content" id="day-jue">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Caldo de pollo:</strong> 175g pechuga + calabaza + zanahoria + chayote.<br>
+          <strong>½ taza arroz integral</strong> cocido (reducido vs antes). Ensalada de nopal o pepino con limón. 2 tortillas de maíz.
+          <div class="meal-tip">🚶 Caminata 10–15 min después</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 fruta pequeña + <strong>80g queso panela</strong> + 2 cdas linaza molida.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Sándwich integral:</strong> 2 rebanadas pan integral + 130g queso panela a la plancha + lechuga + jitomate.<br>
+          ⅓ aguacate. Ensalada verde al lado. Té manzanilla.
+        </div>
+      </div>
+    </div>
+
+    <!-- VIERNES -->
+    <div class="day-content" id="day-vie">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Huevo con verdura:</strong> 3 huevos + pimiento + cebolla salteados en aceite oliva + 50g queso panela.<br>
+          3 tortillas de maíz + ensalada de nopal crudo o col morada. Agua con chía y limón.
+          <div class="meal-tip">🚶 Caminata 10–15 min</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 fruta pequeña + <strong>1 huevo cocido</strong> + 10 almendras.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Asado de res:</strong> 175g carne magra a la plancha + calabaza + lechuga + pepino + cebolla.<br>
+          2 tortillas de maíz + ⅓ aguacate. Té verde.
+        </div>
+      </div>
+    </div>
+
+    <!-- SÁBADO -->
+    <div class="day-content" id="day-sab">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Tacos de pescado:</strong> 150g filete a la plancha + 3 tortillas de maíz + pimiento + cebolla + limón.<br>
+          Ensalada de col morada o nopal. ⅓ aguacate. Agua de pepino con limón sin azúcar.
+          <div class="meal-tip">🚶 Caminata 10–15 min después</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 fruta entera + <strong>80g queso panela</strong> + 10 nueces.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Enchiladas verdes:</strong> 2 tortillas de maíz + <strong>150g pollo deshebrado</strong> + salsa verde natural.<br>
+          ½ taza lechuga orejona + jitomate. ⅓ aguacate. Té manzanilla.
+        </div>
+      </div>
+    </div>
+
+    <!-- DOMINGO -->
+    <div class="day-content" id="day-dom">
+      <div class="pre-meal">⚡ <strong>12:15pm Pre-entreno:</strong> Café negro + 1 cdita aceite de coco + canela (~40 kcal) — ó 8–10 nueces (~100 kcal)</div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🍽️ Primera comida — 3:00 pm</span>
+          <span class="meal-kcal">~800 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Ensalada de pollo:</strong> 175g pechuga + 2 tazas ensalada mixta + ⅓ aguacate.<br>
+          <strong>½ taza pasta integral</strong> cocida (reducido vs antes). Aliño: aceite oliva + limón. Agua con limón.
+          <div class="meal-tip">🚶 Caminata 10–15 min</div>
+        </div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🥜 Colación — 6:30 pm</span>
+          <span class="meal-kcal">~250 kcal</span>
+        </div>
+        <div class="meal-body">1 fruta pequeña + <strong>1 huevo cocido</strong> + 10 almendras.</div>
+      </div>
+      <div class="meal-block">
+        <div class="meal-header">
+          <span class="meal-title">🌙 Cena — 8:30 pm</span>
+          <span class="meal-kcal">~650 kcal</span>
+        </div>
+        <div class="meal-body">
+          <strong>Caldo de verduras con huevo pochado</strong> (2 piezas) + chayote + ejote + zanahoria + calabaza.<br>
+          2 tortillas de maíz. Té verde.
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- REGLAS -->
+  <section id="reglas">
+    <div class="section-title">🚫 Reglas no negociables</div>
+    <ul class="rules-list">
+      <li class="critical"><span class="num">01</span>CERO azúcar añadida — ni un gramo, en ninguna presentación</li>
+      <li class="critical"><span class="num">02</span>CERO harinas refinadas — pan blanco, pasta blanca, espagueti, harina de trigo</li>
+      <li class="critical"><span class="num">03</span>CERO alcohol — hepatotóxico directo, anula el protocolo de hígado</li>
+      <li class="critical"><span class="num">04</span>CERO jugos — aunque sean naturales (pico de glucosa idéntico a refresco)</li>
+      <li><span class="num">05</span>Vinagre de manzana + agua 15 min antes de cada comida grande (2:45pm y opcional 8:15pm)</li>
+      <li><span class="num">06</span>Nopal o col morada cruda mínimo 5 días a la semana — sin excepción</li>
+      <li><span class="num">07</span>Café negro sin azúcar durante el ayuno — máx 3 tazas antes de las 2pm</li>
+      <li><span class="num">08</span>Agua mínimo <strong>3.8 litros/día</strong> (ajustado a 95 kg)</li>
+      <li><span class="num">09</span>Ventana de comida estricta: 3:00pm – 9:00pm</li>
+      <li><span class="num">10</span>Última comida antes de las 9:00pm siempre</li>
+      <li><span class="num">11</span>Caminata 10–15 min después de la primera comida — reduce pico de glucosa ~30%</li>
+      <li><span class="num">12</span>Tortilla siempre de maíz — nunca de harina de trigo</li>
+      <li><span class="num">13</span>Pre-entreno: solo grasa pura o café negro — nunca carbohidrato antes del ejercicio en ayuno</li>
+    </ul>
+  </section>
+
+  <!-- EJERCICIO -->
+  <section id="ejercicio">
+    <div class="section-title">🏋️ Rutina de Ejercicio Terapéutica</div>
+
+    <div class="zona2-badge">
+      <div>
+        <div style="font-size:11px;color:var(--text-muted);margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em;">Tu Zona 2 — 95 kg</div>
+        <div class="lpm">126 – 140 lpm</div>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);">
+        Prueba del habla: puedes mantener una conversación corta pero con esfuerzo.<br>
+        <strong style="color:var(--blue)">Actualizado desde 128–142 lpm (101 kg)</strong>
+      </div>
+    </div>
+
+    <div class="week-grid" style="margin-bottom:20px">
+      <div class="day-pill z2"><div class="d">Lun</div><div class="icon">🚶</div><div class="type">Cardio Z2<br>45–50 min</div></div>
+      <div class="day-pill force"><div class="d">Mar</div><div class="icon">💪</div><div class="type">Fuerza<br>45 min</div></div>
+      <div class="day-pill z2"><div class="d">Mié</div><div class="icon">🚶</div><div class="type">Cardio Z2<br>45–50 min</div></div>
+      <div class="day-pill force"><div class="d">Jue</div><div class="icon">💪</div><div class="type">Fuerza<br>45 min</div></div>
+      <div class="day-pill z2"><div class="d">Vie</div><div class="icon">🚶</div><div class="type">Cardio Z2<br>45–50 min</div></div>
+      <div class="day-pill mob"><div class="d">Sáb</div><div class="icon">🧘</div><div class="type">Movilidad<br>+ caminar 30</div></div>
+      <div class="day-pill rest"><div class="d">Dom</div><div class="icon">🛌</div><div class="type">Descanso<br>total</div></div>
+    </div>
+
+    <div class="card" style="margin-bottom:14px">
+      <h4>💪 Fuerza Metabólica — Martes y Jueves</h4>
+      <table>
+        <thead><tr><th>Circuito A (×3)</th><th>Reps</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td>Sentadilla con mancuerna</td><td>15</td><td>3 seg bajando</td></tr>
+          <tr><td>Lagartija completa / rodillas</td><td>12</td><td>Controlado</td></tr>
+          <tr><td>Peso muerto con mancuernas</td><td>12</td><td>3 seg bajando</td></tr>
+          <tr><td>Remo con mancuerna apoyado</td><td>12 c/lado</td><td>Controlado</td></tr>
+        </tbody>
+      </table>
+      <table style="margin-top:12px">
+        <thead><tr><th>Circuito B (×3)</th><th>Reps</th><th>Tempo</th></tr></thead>
+        <tbody>
+          <tr><td>Zancada alternada</td><td>10 c/lado</td><td>Lento</td></tr>
+          <tr><td>Press de hombro sentado</td><td>12</td><td>Controlado</td></tr>
+          <tr><td>Curl de bíceps</td><td>15</td><td>3 seg bajando</td></tr>
+          <tr><td>Plancha frontal</td><td>30 seg</td><td>Respira</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cards-3">
+      <div class="card green-accent" style="text-align:center">
+        <div style="font-size:28px;margin-bottom:8px">1</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--green);margin-bottom:4px">Cardio Z2 en ayuno</div>
+        <div style="font-size:12px;color:var(--text-muted)">Quema grasa hepática directa</div>
+      </div>
+      <div class="card blue-accent" style="text-align:center">
+        <div style="font-size:28px;margin-bottom:8px">2</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--blue);margin-bottom:4px">Caminata post-comida</div>
+        <div style="font-size:12px;color:var(--text-muted)">Reduce pico glucosa ~30%</div>
+      </div>
+      <div class="card orange-accent" style="text-align:center">
+        <div style="font-size:28px;margin-bottom:8px">3</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--orange);margin-bottom:4px">Fuerza 2×/semana</div>
+        <div style="font-size:12px;color:var(--text-muted)">Absorbe glucosa sin insulina</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRESIÓN -->
+  <section id="progresion">
+    <div class="section-title">📈 Progresión realista desde 95 kg</div>
+    <div class="prognosis-row">
+      <div class="prog-card"><div class="pw">95 kg</div><div class="pl">Hoy ✓</div></div>
+      <div class="prog-card"><div class="pw">~93.5</div><div class="pl">+2 semanas</div></div>
+      <div class="prog-card"><div class="pw">~91–92</div><div class="pl">+1 mes</div></div>
+      <div class="prog-card"><div class="pw">~88–89</div><div class="pl">+2 meses</div></div>
+      <div class="prog-card"><div class="pw">~85–86</div><div class="pl">+3 meses</div></div>
+      <div class="prog-card" style="border-color:var(--green)"><div class="pw" style="color:var(--green)">~84</div><div class="pl" style="color:var(--green)">Meta 🎯</div></div>
+    </div>
+
+    <div class="card mt-12">
+      <h4>Hitos metabólicos esperados</h4>
+      <table>
+        <thead><tr><th>Período</th><th>Señal</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sem 1–2</strong></td><td>Adaptación al ayuno extendido (18h). Hambre matutina normal, desaparece progresivamente.</td></tr>
+          <tr><td><strong>Sem 3–4</strong></td><td>Hambre matutina casi nula. Energía estable. Menos hinchazón abdominal.</td></tr>
+          <tr><td><strong>Mes 2</strong></td><td>Glucosa ayuno bajando a 90–95. Pérdida sostenida ~0.8–1 kg/sem. Mejor sueño.</td></tr>
+          <tr><td><strong>Mes 3</strong></td><td>ALT (transaminasas) probablemente en rango. Insulina basal notablemente más baja. Repetir análisis.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box mt-12">
+      <div class="hb-title">💊 Suplemento opcional</div>
+      <p><strong>Berberina 500mg</strong> — 2 veces al día con las comidas principales. Aprueba con tu médico antes de iniciar. Efecto equivalente a metformina en sensibilidad a insulina.</p>
+    </div>
+  </section>
+
+  <a href="#top" class="back-top">↑ Volver arriba</a>
+
+</main>
+
+<footer>
+  Dieta Fusionada v2 · Salud Digna + Protocolo Terapéutico · 1,800 kcal · 18:6 IF · Gilberto · 95 kg · 170 cm · 38 años
+</footer>
+
+<script>
+  function showDay(day) {
+    document.querySelectorAll('.day-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.day-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('day-' + day).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
